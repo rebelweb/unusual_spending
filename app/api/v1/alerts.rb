@@ -3,7 +3,7 @@ require 'grape'
 module API
   module V1
     class Alerts < Grape::API
-      version 'v1', using: :header
+      version 'v1', using: :header, vendor: :rebelweb
       format :json
       prefix :api
 

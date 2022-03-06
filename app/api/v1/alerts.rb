@@ -13,7 +13,7 @@ module API
           requires :user_id, type: Integer, desc: 'User Id to send alert for'
         end
         post do
-          UnusualSpendingAlertOperaation.new.call(params)
+          UnusualSpendingAlertOperation.new.call(params)
         end
       end
     end

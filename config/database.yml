@@ -1,0 +1,6 @@
+development:
+  adapter: postgresql
+  host: localhost
+  database: unusual_spending_development
+  username: postgres
+  password: postgres

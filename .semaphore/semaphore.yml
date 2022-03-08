@@ -16,6 +16,8 @@ agent:
       env_vars:
         - name: POSTGRES_PASSWORD
           value: postgres
+        - name: POSTGRES_DB
+          value: unusual_spending_test
 blocks:
   - name: Build
     task:
@@ -32,7 +34,6 @@ blocks:
         commands:
           - checkout
           - bundle install -j 4
-          - bundle exec rake db:create
           - bundle exec rake db:prepare
       jobs:
         - name: Test

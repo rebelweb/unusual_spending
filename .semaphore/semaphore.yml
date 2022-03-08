@@ -25,7 +25,7 @@ blocks:
       jobs:
         - name: Build
           commands:
-            - bundle install -j
+            - bundle install -j 4
   - name: Test
     task:
       prologue:

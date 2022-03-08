@@ -19,23 +19,23 @@ agent:
 blocks:
   - name: Build
     task:
+      prologue:
+        commands:
+          - checkout
       jobs:
         - name: Build
-          prologue:
-            commands:
-              - checkout
           commands:
             - bundle install -j
   - name: Test
     task:
+      prologue:
+        commands:
+          - checkout
+          - bundle install -j 4
+          - bundle exec rake db:create
+          - bundle exec rake db:prepare
       jobs:
         - name: Test
-          prologue:
-            commands:
-              - checkout
-              - bundle install -j 4
-              - bundle exec rake db:create
-              - bundle exec rake db:prepare
           commands:
             - bundle exec rspec
 

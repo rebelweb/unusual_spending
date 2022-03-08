@@ -4,14 +4,39 @@ agent:
   machine:
     type: e1-standard-2
     os_image: ubuntu2004
+  containers:
+    - name: main
+      image: registry.semaphoreci.com/ruby:3.0
+      env_vars:
+        - name: DB_HOST
+          value: postgres
+    - name: postgres
+      image: registry.semaphoreci.com/postgres:13
+      user: postgres
+      env_vars:
+        - name: POSTGRES_PASSWORD
+          value: postgres
 blocks:
   - name: Build
     task:
       jobs:
-        - name: docker build
+        - name: Build
+          prologue:
+            commands:
+              - checkout
           commands:
-            - checkout
-            - 'docker build -t registry.digitalocean.com/dayhiker/unusual_expenses:latest .'
-      env_vars:
-        - name: FOO_1
-          value: BAR_1
+            - bundle install -j
+  - name: Test
+    task:
+      jobs:
+        - name: Test
+          prologue:
+            commands:
+              - checkout
+              - bundle install -j 4
+              - bundle exec rake db:create
+              - bundle exec rake db:prepare
+          commands:
+            - bundle exec rspec
+
+

@@ -1,7 +1,8 @@
 require 'rack/test'
-require './config/application'
 
 ENV['APP_ENV'] ||= 'test'
+
+require './config/application'
 
 abort('RSpec is running in production!') if (ENV['APP_ENV'] == 'production')
 

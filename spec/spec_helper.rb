@@ -1,10 +1,10 @@
-require 'rack/test'
-
 ENV['APP_ENV'] ||= 'test'
 
 require './config/application'
 
 abort('RSpec is running in production!') if (ENV['APP_ENV'] == 'production')
+
+require 'rack/test'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|

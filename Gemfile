@@ -11,6 +11,7 @@ gem 'rake', '~> 13.0', '>= 13.0.6'
 gem 'thin', '~> 1.8', '>= 1.8.1'
 
 group :development, :test do
+  gem 'rack-test', '~> 1.1'
   gem 'rspec'
   gem 'faker'
   gem 'pry'

@@ -1,5 +1,9 @@
 require 'rack/test'
 
+ENV['APP_ENV'] ||= 'test'
+
+abort('RSpec is running in production!') if (ENV['APP_ENV'] == 'production')
+
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true

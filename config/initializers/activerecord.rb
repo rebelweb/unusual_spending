@@ -1,5 +1,6 @@
 require 'yaml'
 require 'erb'
+require 'otr-activerecord'
 
 yaml_data = ERB.new(File.read('config/database.yml')).result
 

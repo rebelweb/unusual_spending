@@ -1,4 +1,5 @@
 require 'rack/test'
+require './config/application'
 
 ENV['APP_ENV'] ||= 'test'
 

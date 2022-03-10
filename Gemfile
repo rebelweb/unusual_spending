@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'actionmailer', '~> 7.0', '>= 7.0.2.3'
 gem 'dry-monads', '~> 1.4'
 gem 'dry-schema', '~> 1.9', '>= 1.9.1'
 gem 'dry-validation', '~> 1.8'

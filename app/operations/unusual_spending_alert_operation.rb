@@ -20,6 +20,7 @@ class UnusualSpendingAlertOperation
   def call(params)
     validate_input(params)
       .bind { |data| find_user(data) }
+      .bind { |user| get_transactions(user) }
   end
 
   private
@@ -37,5 +38,10 @@ class UnusualSpendingAlertOperation
     Success(User.find(user_id))
   rescue
     Failure("User Not Found")
+  end
+
+  def get_transactions(user)
+    payments = Payment.where(user_id: user.id)
+    Success({user: user, payments: payments})
   end
 end

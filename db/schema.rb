@@ -10,9 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_06_164214) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_09_032559) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "payments", force: :cascade do |t|
+    t.datetime "transaction_date", null: false
+    t.integer "user_id", null: false
+    t.string "account_number", null: false
+    t.decimal "amount", precision: 6, scale: 2, null: false
+    t.integer "category", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "first_name", null: false
@@ -20,4 +28,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_06_164214) do
     t.string "email_address", null: false
   end
 
+  add_foreign_key "payments", "users"
 end

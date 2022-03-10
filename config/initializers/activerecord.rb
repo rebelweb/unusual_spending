@@ -1,6 +1,10 @@
 require 'yaml'
+require 'erb'
+require 'otr-activerecord'
 
-configurations = YAML.load_file('config/database.yml')
+yaml_data = ERB.new(File.read('config/database.yml')).result
+
+configurations = YAML.load(yaml_data)
 
 db_params = configurations[ENV['APP_ENV']]
 

@@ -9,6 +9,7 @@ RSpec.describe UnusualSpendingAlertOperation, type: :operation do
   end
 
   it 'returns success with valid input' do
-    expect(subject.call(user_id: 5).success?).to be_truthy
+    user = create(:client)
+    expect(subject.call(user_id: user.id).success?).to be_truthy
   end
 end

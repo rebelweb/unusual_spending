@@ -1,4 +1,11 @@
+ENV['APP_ENV'] ||= 'test'
+
+require './config/application'
+
+abort('RSpec is running in production!') if (ENV['APP_ENV'] == 'production')
+
 require 'rack/test'
+require 'factory_bot'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
@@ -23,6 +30,11 @@ RSpec.configure do |config|
   config.order = :random
 
   config.include Rack::Test::Methods, type: :e2e
+  config.include FactoryBot::Syntax::Methods
+
+  config.before(:suite) do
+    FactoryBot.find_definitions
+  end
 
   Kernel.srand config.seed
 end

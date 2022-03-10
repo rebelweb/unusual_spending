@@ -19,6 +19,7 @@ class UnusualSpendingAlertOperation
 
   def call(params)
     validate_input(params)
+      .bind { |data| find_user(data) }
   end
 
   private
@@ -29,5 +30,12 @@ class UnusualSpendingAlertOperation
     schema.call(input.to_h).to_monad
           .bind { |result| Success(result) }
           .or { |errors| Failure(errors) }
+  end
+
+  def find_user(input_data)
+    user_id = input_data.fetch(:user_id)
+    Success(User.find(user_id))
+  rescue
+    Failure("User Not Found")
   end
 end

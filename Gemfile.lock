@@ -90,6 +90,7 @@ GEM
       rspec-support (~> 3.11.0)
     rspec-support (3.11.0)
     ruby2_keywords (0.0.5)
+    sequel (5.54.0)
     thin (1.8.1)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0, >= 1.0.4)
@@ -114,6 +115,7 @@ DEPENDENCIES
   rack-test (~> 1.1)
   rake (~> 13.0, >= 13.0.6)
   rspec
+  sequel (~> 5.54)
   thin (~> 1.8, >= 1.8.1)
 
 BUNDLED WITH

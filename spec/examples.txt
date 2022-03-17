@@ -1,6 +1,5 @@
-example_id                                                       | status | run_time        |
----------------------------------------------------------------- | ------ | --------------- |
-./spec/e2e/alerts_e2e_spec.rb[1:1]                               | failed | 0.00353 seconds |
-./spec/operations/unusual_spending_alerts_operation_spec.rb[1:1] | passed | 0.00054 seconds |
-./spec/operations/unusual_spending_alerts_operation_spec.rb[1:2] | passed | 0.00993 seconds |
-./spec/services/monthly_expense_breakdown_service_spec.rb[1:1]   | passed | 0.10324 seconds |
+example_id                                                          | status | run_time        |
+------------------------------------------------------------------- | ------ | --------------- |
+./spec/e2e/alerts_e2e_spec.rb[1:1]                                  | failed | 0.00353 seconds |
+./spec/operations/send_unusual_expense_alert_operation_spec.rb[1:1] | passed | 0.01141 seconds |
+./spec/operations/send_unusual_expense_alert_operation_spec.rb[1:2] | passed | 0.00026 seconds |

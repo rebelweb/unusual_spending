@@ -1,8 +1,13 @@
 require "bundler/setup"
 
 namespace :db do
-  # Some db tasks require your app code to be loaded; they'll expect to find it here
-  task :environment do
-     require_relative "./config/application"
+  desc "Run migrations"
+  task :migrate, [:version] do |t, args|
+    require 'sequel/core'
+    Sequel.extension :migration
+    version = args[:version].to_i if args[:version]
+    Sequel.connect(ENV.fetch("DATABASE_URL")) do |db|
+      Sequel::Migrator.run(db, "db/migrations", target: version)
+    end
   end
 end
